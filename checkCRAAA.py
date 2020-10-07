@@ -12,7 +12,7 @@ import difflib
 
 """
 
-Script for editorial style checking of the CRAAA
+Script to check the editorial style of the CRAAA
 
 Packages: See README
 
