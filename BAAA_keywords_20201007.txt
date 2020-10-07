@@ -382,3 +382,7 @@ X-rays: general
 X-rays: individual (…, …)
 X-rays: ISM
 X-rays: stars
+outreach
+science journalism
+itizen science
+education
