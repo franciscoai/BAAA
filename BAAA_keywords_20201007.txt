@@ -384,5 +384,5 @@ X-rays: ISM
 X-rays: stars
 outreach
 science journalism
-itizen science
+citizen science
 education

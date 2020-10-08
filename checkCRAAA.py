@@ -9,6 +9,7 @@ import pandas as pd
 from pylatexenc.latexencode import unicode_to_latex
 from chardet.universaldetector import UniversalDetector
 import difflib
+import re
 
 """
 
@@ -58,7 +59,10 @@ f = open(kwrdfile,"r")
 keywordList = f.readlines()
 for i in range(len(keywordList)):
   keywordList[i] =  keywordList[i].replace('\n','')
+  keywordList[i] =  re.sub("[\(\[].*?[\)\]]", "", keywordList[i]).strip()
 f.close()
+
+print(keywordList)
 
 f = open(afffile,"r")
 aList = f.readlines()
@@ -122,7 +126,7 @@ def clean_keywords(text):
 
         if not (key in keywordList):
           print(colored('  bad keyword: %s ' % key,'yellow'))
-          print(colored('   suggestion: '+difflib.get_close_matches(r'{}'.format(key), keywordList)[0],'yellow'))
+          print(colored('  suggestion: '+difflib.get_close_matches(r'{}'.format(key), keywordList)[0],'yellow'))
           print('')
 
         col = 'key_%03d' % i
