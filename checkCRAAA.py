@@ -22,6 +22,7 @@ Usage: python3 checkCRAAA.py test_CRAAA.tex
 Changes log:
 -20201001: First version - Mario Agustin Sgro <observandum@gmail.com> 
 -20201007: Updated afiliations file and some cosmetics - franciscoaiglesias@gmail.com
+-20201008: it ignoores parentheses in keywords list - franciscoaiglesias@gmail.com
 
 """
 #CONSTANTS
@@ -61,8 +62,6 @@ for i in range(len(keywordList)):
   keywordList[i] =  keywordList[i].replace('\n','')
   keywordList[i] =  re.sub("[\(\[].*?[\)\]]", "", keywordList[i]).strip()
 f.close()
-
-print(keywordList)
 
 f = open(afffile,"r")
 aList = f.readlines()
