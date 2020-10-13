@@ -61,6 +61,11 @@ keywordList = f.readlines()
 for i in range(len(keywordList)):
   keywordList[i] =  keywordList[i].replace('\n','')
   keywordList[i] =  re.sub("[\(\[].*?[\)\]]", "", keywordList[i]).strip()
+  #casos con () que estan OK
+  if  keywordList[i] == 'magnetohydrodynamics': 
+     keywordList[i] = 'magnetohydrodynamics (MHD)'
+  if  keywordList[i] == 'Sun: coronal mass ejections':
+     keywordList[i] = 'Sun: coronal mass ejections (CMEs)'     
 f.close()
 
 f = open(afffile,"r")
@@ -125,7 +130,11 @@ def clean_keywords(text):
 
         if not (key in keywordList):
           print(colored('  bad keyword: %s ' % key,'yellow'))
-          print(colored('  suggestion: '+difflib.get_close_matches(r'{}'.format(key), keywordList)[0],'yellow'))
+          try:
+            sugg =difflib.get_close_matches(r'{}'.format(key), keywordList)[0]
+          except:
+            sugg = 'NO MATCH'
+          print(colored('  suggestion : '+sugg,'yellow'))
           print('')
 
         col = 'key_%03d' % i
@@ -152,8 +161,12 @@ def clean_affil(text):
           key = unicode_to_latex(key,non_ascii_only=True)
 
         if not (key in aList):
-          print(colored('  bad affil: %s ' % key,'white'))
-          print(colored(' suggestion: '+difflib.get_close_matches(r'{}'.format(key), aList)[0],'white'))
+          print(colored('  bad affil : %s ' % key,'white'))
+          try:
+            sugg =difflib.get_close_matches(r'{}'.format(key), aList)[0]
+          except:
+            sugg = 'NO MATCH'
+          print(colored('  suggestion: '+sugg,'white'))
           print('')
 
         col = 'key_%03d' % i
@@ -225,7 +238,7 @@ def clean_author(text):
         surname = surname.replace('\n','')
 
         if ' ' in surname:
-          print(colored("*****Checking apellido -> %s" % (surname),"green"))
+          print(colored(" Check apellido -> %s" % (surname),"green"))
 
         if not isascii(surname):
           surname = unicode_to_latex(surname,non_ascii_only=True)
