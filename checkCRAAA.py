@@ -22,7 +22,7 @@ Usage: python3 checkCRAAA.py test_CRAAA.tex
 Changes log:
 -20201001: First version - Mario Agustin Sgro <observandum@gmail.com> 
 -20201007: Updated afiliations file and some cosmetics - franciscoaiglesias@gmail.com
--20201008: it ignoores parentheses in keywords list - franciscoaiglesias@gmail.com
+-20201008: it ignores parentheses in keywords list - franciscoaiglesias@gmail.com
 
 """
 #CONSTANTS
@@ -140,7 +140,7 @@ def clean_keywords(text):
         col = 'key_%03d' % i
         keywords[col] = key
 
-    print(colored('PASSED',"yellow"))
+    #print(colored('PASSED',"yellow"))
     return(keywords)
 
 def clean_affil(text):
@@ -172,7 +172,7 @@ def clean_affil(text):
         col = 'key_%03d' % i
         affiliations[col] = key
 
-    print(colored('PASSED',"white"))
+    #print(colored('PASSED',"white"))
     return(affiliations)
 
 
@@ -189,7 +189,7 @@ def clean_title(title,subtitle):
     if not isascii(title):
       title = unicode_to_latex(title,non_ascii_only=True)
 
-    print(colored('PASSED',"blue"))
+    #print(colored('PASSED',"blue"))
     return(title)
 
 def clean_author(text):
@@ -248,7 +248,7 @@ def clean_author(text):
         col = 'surname_%03d' % i
         authors[col] = surname
 
-    print(colored('PASSED',"green"))
+    #print(colored('PASSED',"green"))
     return(authors)
 
 def return_header(text):
@@ -307,7 +307,7 @@ if __name__ == '__main__':
     m = return_metadata(d,keys)
 
     print("*******************************************")
-    print("*********** CRAAA TEST SCRIPT *************")
+    print("**** CRAAA TEST SCRIPT (File "+os.path.basename(filename)+") ****")
     print("*******************************************")
     m['title']  = clean_title(m['title'],m['subtitle'])
     m['author']  = clean_author(m['author'])
