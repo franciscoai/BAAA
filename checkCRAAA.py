@@ -23,6 +23,7 @@ Changes log:
 -20201001: First version - Mario Agustin Sgro <observandum@gmail.com> 
 -20201007: Updated afiliations file and some cosmetics - franciscoaiglesias@gmail.com
 -20201008: it ignores parentheses in keywords list - franciscoaiglesias@gmail.com
+-20201019: only prints msg for errors - franciscoaiglesias@gmail.com
 
 """
 #CONSTANTS
@@ -107,7 +108,7 @@ def return_metadata(text,keys):
   return(metadata)
 
 def clean_keywords(text):
-    print(colored('*****Checking Keywords',"yellow"))
+    #print(colored('*****Checking Keywords',"yellow"))
 
     isascii = lambda s: len(s) == len(s.encode())
 
@@ -144,7 +145,7 @@ def clean_keywords(text):
     return(keywords)
 
 def clean_affil(text):
-    print(colored('*****Checking Institute',"white"))
+    #print(colored('*****Checking Institute',"white"))
 
     isascii = lambda s: len(s) == len(s.encode())
 
@@ -177,7 +178,7 @@ def clean_affil(text):
 
 
 def clean_title(title,subtitle):
-    print(colored('*****Checking Title',"blue"))
+    #print(colored('*****Checking Title',"blue"))
     isascii = lambda s: len(s) == len(s.encode())
 
     if (subtitle):
@@ -193,7 +194,7 @@ def clean_title(title,subtitle):
     return(title)
 
 def clean_author(text):
-    print(colored('*****Checking Authors',"green"))
+    #print(colored('*****Checking Authors',"green"))
     isascii = lambda s: len(s) == len(s.encode())
 
     while True:
