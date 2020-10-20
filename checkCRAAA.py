@@ -28,7 +28,7 @@ Changes log:
 """
 #CONSTANTS
 
-afffile="BAAA_affiliations_20201007.csv"
+afffile="BAAA_affiliations_20201020.txt"
 
 kwrdfile="BAAA_keywords_20201007.txt"
 
